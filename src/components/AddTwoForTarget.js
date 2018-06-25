@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
-import { addTwoForTarget, generateRandomArray, generateRandomTarget } from './features/add-two-for-target/index';
+import { coreAddTwoForTarget, coreCleanTheRoom, coreConverter } from './../challenge-core';
 
 class AddTwoForTarget extends Component {
     constructor() {
         super();
         this.state = {
             givenArray: [],
-            givenTarget: ''        
+            givenTarget: '',
+            result: ''        
         }
     }
 
     onAddTwoClick = () => {
+        const { addTwoForTarget, generateRandomArray, generateRandomTarget } = coreAddTwoForTarget;
+
         const givenNumbers = document.getElementById('add-two-array').value;
         let targetNum = document.getElementById('add-two-target').valueAsNumber;
         let userArr;
@@ -21,28 +24,28 @@ class AddTwoForTarget extends Component {
             console.log('error', err.message);
         }
 
-        console.log(userArr);
         userArr = userArr.filter(el => typeof(el) === 'number' && !isNaN(el));
         if (userArr.length < 2) {
             console.log(`Sorry, there should be at least TWO numbers in the given array.`);
             userArr = generateRandomArray();
         }
 
-        console.log(userArr);
-        
         if (isNaN(targetNum)) {
             targetNum = generateRandomTarget();
         }
 
+        const result = addTwoForTarget([userArr, targetNum]);
+        const resultStr = (typeof(result) === 'string') ? result : `${result[0]} and ${result[1]} are added to produce ${targetNum}.`;
+
         this.setState({
             givenArray: userArr,
-            givenTarget: targetNum
+            givenTarget: targetNum,
+            result: resultStr
         });
     }
 
     render() {
-        const result = addTwoForTarget([this.state.givenArray, this.state.givenTarget]);
-        const resultStr = (typeof(result) === 'string') ? result : `${result[0]} and ${result[1]} are added to produce ${this.state.givenTarget}.`;
+
     
         return (
             <div className='bg-light-yellow pa2'>
@@ -58,12 +61,10 @@ class AddTwoForTarget extends Component {
                 <button type='button' onClick={this.onAddTwoClick}>Find!</button>
                 <p>Given Array: { JSON.stringify(this.state.givenArray) }</p>
                 <p>Target Number: { this.state.givenTarget }</p>
-                <p>Result: { resultStr }</p>
+                <p>{ this.state.result }</p>
             </div>
-    
         );
     }
-
 }
 
 export default AddTwoForTarget;
