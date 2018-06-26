@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { coreAddTwoForTarget, coreCleanTheRoom, coreConverter } from './../challenge-core';
+import { coreAddTwoForTarget } from './../challenge-core';
 
 class AddTwoForTarget extends Component {
     constructor() {
@@ -45,8 +45,6 @@ class AddTwoForTarget extends Component {
     }
 
     render() {
-
-    
         return (
             <div className='bg-light-yellow pa2'>
                 <h2>Add Two For Target</h2>
