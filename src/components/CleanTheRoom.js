@@ -5,7 +5,6 @@ class CleanTheRoom extends Component {
     constructor() {
         super();
         this.state = {
-            inputValue: '',
             givenArray: [],
             cleanedArray: []
         }
@@ -13,15 +12,14 @@ class CleanTheRoom extends Component {
 
     onCleanRoomClick = () => {
 
-        const { cleanTheRoom } = coreCleanTheRoom;
+        const { cleanTheRoom, generateRandomArrayToClean } = coreCleanTheRoom;
 
         const givenNumbers = document.getElementById('clean-room-array').value;
         let userArr;
-        let resultArr;
 
         if (givenNumbers.length < 1) {
-            userArr = 'No Array Given';
-            resultArr = 'No Cleaning';            
+            userArr = generateRandomArrayToClean();
+            
         } else {
             try {
                 userArr = ((givenNumbers.split(',')).map(el => el.trim()));
@@ -29,23 +27,13 @@ class CleanTheRoom extends Component {
             } catch(err) {
                 console.log('error', err.message);
             }
-            resultArr = cleanTheRoom(userArr);
         }
 
+        const resultArr = cleanTheRoom(userArr);
+
         this.setState({
-            inputValue: '',
             givenArray: userArr,
             cleanedArray: resultArr
-        });
-    }
-
-    onRandomClick = () => {
-        const { generateRandomArrayToClean } = coreCleanTheRoom;
-        const randomArr = JSON.stringify(generateRandomArrayToClean());
-        this.setState({
-            inputValue: randomArr.slice(1, randomArr.length-1),
-            givenArray: [],
-            cleanedArray: []
         });
     }
 
@@ -55,8 +43,7 @@ class CleanTheRoom extends Component {
                 <h2>Clean The Room</h2>
                 <div>
                 <label htmlFor='to-be-cleaned'>Cleaned From: </label>
-                <input id='clean-room-array' type='text' value={ this.state.inputValue}/>
-                <button type='button' onClick={this.onRandomClick}>Random</button>
+                <input id='clean-room-array' type='text'/>
                 </div>
                 <button type='button' onClick={this.onCleanRoomClick}>Clean!</button>
                 <p>Given Array: { JSON.stringify(this.state.givenArray) }</p>
