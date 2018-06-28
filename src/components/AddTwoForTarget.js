@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { coreAddTwoForTarget } from './../challenge-core';
+import Button from './Button';
 
 class AddTwoForTarget extends Component {
     constructor() {
@@ -49,17 +50,17 @@ class AddTwoForTarget extends Component {
             <div className='bg-light-yellow pa2'>
                 <h2>Add Two For Target</h2>
                 <div>
-                <label htmlFor='array'>Numbers: </label>
-                <input id='add-two-array' type='text' />
+                <label htmlFor='array'>Numbers </label>
+                <input id='add-two-array' type='text' className="w-30" placeholder='Type numbers separated with commas.'/>
                 </div>
                 <div>
                 <label htmlFor='target'>Target Number: </label>      
-                <input id='add-two-target' type='number' />
+                <input id='add-two-target' type='number' placeholder='Type a number.'/>
                 </div>
-                <button type='button' onClick={this.onAddTwoClick}>Find!</button>
+                <Button clickFunc={this.onAddTwoClick} buttonText={'Find!'}/>
                 <p>Given Array: { JSON.stringify(this.state.givenArray) }</p>
                 <p>Target Number: { this.state.givenTarget }</p>
-                <p>{ this.state.result }</p>
+                <p className="b f4 red">{ this.state.result }</p>
             </div>
         );
     }

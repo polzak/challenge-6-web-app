@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { coreCleanTheRoom } from './../challenge-core';
+import Button from './Button';
 
 class CleanTheRoom extends Component {
     constructor() {
@@ -39,15 +40,15 @@ class CleanTheRoom extends Component {
 
     render() {
         return (
-            <div className='bg-light-red pa2'>
+            <div className='bg-washed-red pa2'>
                 <h2>Clean The Room</h2>
                 <div>
-                <label htmlFor='to-be-cleaned'>Cleaned From: </label>
-                <input id='clean-room-array' type='text'/>
+                <label htmlFor='to-be-cleaned'>Cleaned From </label>
+                <input id='clean-room-array' type='text' className="w-30" placeholder='Type numbers separated with commas. ex) 3, 2, 1, ...'/>
                 </div>
-                <button type='button' onClick={this.onCleanRoomClick}>Clean!</button>
+                <Button clickFunc={this.onCleanRoomClick} buttonText={'Clean!'}/>
                 <p>Given Array: { JSON.stringify(this.state.givenArray) }</p>
-                <p>Cleaned Array: { JSON.stringify(this.state.cleanedArray) }</p>
+                <p>Cleaned Array: <span className="b f4 red">{ JSON.stringify(this.state.cleanedArray) }</span></p>
             </div>
         );
     }
