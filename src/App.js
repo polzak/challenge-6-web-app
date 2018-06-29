@@ -19,7 +19,7 @@ class App extends Component {
         <AddTwoForTarget />
         <HexToRgb />
         <footer className="pv4 ph3 ph5-m ph6-l white bg-mid-gray">
-          <small className="f6 db tc">Created by <b className="ttu"><a className="white" href="https://github.com/polzak">Polzak</a></b></small>
+          <small className="f6 db tc">Created by <b className="ttu"><a className="white" href="https://github.com/polzak/challenge-6-web-app">Polzak</a></b></small>
         </footer>
       </div>
     );
