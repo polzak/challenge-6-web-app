@@ -3,12 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1",
+    "react": "^16.8.1",
+    "react-dom": "^16.8.1",
     "react-ga": "^2.5.7",
     "react-scripts": "1.1.4",
-    "simple-rgb-hex-converter": "^1.0.2",
-    "tachyons": "^4.10.0"
+    "simple-rgb-hex-converter": "^1.0.3",
+    "tachyons": "^4.11.1"
   },
   "scripts": {
     "start": "react-scripts start",
