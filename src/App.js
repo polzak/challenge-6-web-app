@@ -3,8 +3,20 @@ import './App.css';
 import CleanTheRoom from './components/CleanTheRoom';
 import AddTwoForTarget from './components/AddTwoForTarget';
 import HexToRgb from './components/HextToRgb';
+import ReactGA from 'react-ga';
+
+
+function initializeReactGA() {
+  ReactGA.initialize('UA-123791717-1');
+  ReactGA.pageview('/homepage');
+}
 
 class App extends Component {
+
+  componentDidMount() {
+    initializeReactGA();
+  }
+
   render() {
     return (
       <div className="tc">
